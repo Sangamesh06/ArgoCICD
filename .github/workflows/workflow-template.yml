@@ -1,0 +1,21 @@
+name: Simple Input Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_input:
+        description: 'Enter your input'
+        required: true
+        default: 'Hello World!'
+
+jobs:
+  print_input:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print Input
+        run: echo "Your input is: ${{ github.event.inputs.user_input }}"
+
