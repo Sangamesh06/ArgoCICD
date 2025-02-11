@@ -9,5 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Input
-        run: echo "Input received: ${{ github.event.inputs.user_input }}"
-
+        run: echo "Input received: "
