@@ -1,12 +1,23 @@
 
-name: Example Workflow
+name: Simple Input Workflow
 
 on:
-  workflow_dispatch:  # 👈 This is required for manual triggering
+  workflow_dispatch:
+    inputs:
+      user_input:
+        description: "Enter your input"
+        required: true
+        default: "Hello World!"
 
 jobs:
-  example_job:
+  print_input:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Print Input
-        run: echo "Input received: "
+        run: |
+          echo "Your input is: ${{ github.event.inputs.user_input }}"
+
